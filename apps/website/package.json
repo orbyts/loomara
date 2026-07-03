@@ -17,6 +17,7 @@
   "devDependencies": {
     "@astrojs/check": "latest",
     "typescript": "latest",
-    "vitest": "latest"
+    "vitest": "latest",
+    "wrangler": "4.107.0"
   }
 }
