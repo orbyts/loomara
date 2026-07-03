@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "loomara": "./dist/cli.js"
+    "loomara": "dist/cli.js"
   },
   "files": [
     "dist",
