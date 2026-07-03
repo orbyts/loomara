@@ -1,0 +1,94 @@
+<div class="theme-control" aria-label="Theme">
+  <button
+    class="theme-trigger"
+    type="button"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-controls="theme-menu"
+  >
+    <span class="theme-trigger__label">theme</span>
+    <span class="theme-trigger__value" data-theme-value>system</span>
+  </button>
+  <div class="theme-menu" id="theme-menu" role="menu" hidden>
+    <button type="button" role="menuitemradio" data-theme-option="light"
+      >light</button
+    >
+    <button type="button" role="menuitemradio" data-theme-option="dark"
+      >dark</button
+    >
+    <button type="button" role="menuitemradio" data-theme-option="system"
+      >system</button
+    >
+  </div>
+</div>
+
+<script>
+  import {
+    readThemePreference,
+    setThemePreference,
+    type ThemePreference,
+  } from "../scripts/theme";
+
+  const root = document.querySelector<HTMLElement>(".theme-control");
+  const trigger = root?.querySelector<HTMLButtonElement>(".theme-trigger");
+  const menu = root?.querySelector<HTMLElement>(".theme-menu");
+  const value = root?.querySelector<HTMLElement>("[data-theme-value]");
+  const options = Array.from(
+    root?.querySelectorAll<HTMLButtonElement>("[data-theme-option]") ?? [],
+  );
+
+  function render(preference: ThemePreference): void {
+    if (value) value.textContent = preference;
+    for (const option of options) {
+      option.setAttribute(
+        "aria-checked",
+        String(option.dataset.themeOption === preference),
+      );
+    }
+  }
+
+  function closeMenu(): void {
+    if (!menu || !trigger) return;
+    menu.hidden = true;
+    trigger.setAttribute("aria-expanded", "false");
+  }
+
+  function openMenu(): void {
+    if (!menu || !trigger) return;
+    menu.hidden = false;
+    trigger.setAttribute("aria-expanded", "true");
+    options
+      .find((option) => option.getAttribute("aria-checked") === "true")
+      ?.focus();
+  }
+
+  render(readThemePreference());
+  trigger?.addEventListener("click", () =>
+    menu?.hidden ? openMenu() : closeMenu(),
+  );
+
+  for (const option of options) {
+    option.addEventListener("click", () => {
+      const preference = option.dataset.themeOption as ThemePreference;
+      setThemePreference(preference);
+      render(preference);
+      closeMenu();
+      trigger?.focus();
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    if (root && !root.contains(event.target as Node)) closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+      trigger?.focus();
+    }
+  });
+
+  window.addEventListener("suhail:theme-change", (event) => {
+    render((event as CustomEvent<ThemePreference>).detail);
+  });
+</script>

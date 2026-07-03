@@ -27,7 +27,7 @@ importers:
         specifier: latest
         version: 8.62.1(eslint@10.6.0)(typescript@6.0.3)
 
-  apps/website:
+  apps/suhail-ink:
     dependencies:
       astro:
         specifier: latest

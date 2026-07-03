@@ -1,9 +1,9 @@
 {
-  "name": "@orbyts/loomara-website",
+  "name": "@orbyts/suhail-ink",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "The first Loomara-assembled website.",
+  "description": "The public suhail.ink website, assembled by Loomara.",
   "scripts": {
     "build": "astro build",
     "check": "astro check",
@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "test": "vitest run --passWithNoTests",
     "preview:cloudflare": "pnpm build && wrangler dev",
-    "deploy": "pnpm build && wrangler deploy"
+    "deploy:cloudflare": "pnpm build && wrangler deploy"
   },
   "dependencies": {
     "astro": "latest"

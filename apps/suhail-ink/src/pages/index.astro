@@ -1,0 +1,39 @@
+---
+import EntryHero from "../components/EntryHero.astro";
+import MainNavigation from "../components/MainNavigation.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { site } from "../site.config";
+---
+
+<SiteLayout>
+  <EntryHero
+    contactHref={site.contactHref}
+    instagramHref={site.instagramHref}
+  />
+  <main class="site-content" id="site-content" tabindex="-1">
+    <MainNavigation />
+    <section class="placeholder-grid" aria-label="Primary sections">
+      <article class="placeholder-card" id="work">
+        <h2>work</h2>
+        <p>
+          Software, visual systems, machine learning, VFX tools, and selected
+          projects.
+        </p>
+      </article>
+      <article class="placeholder-card" id="photography">
+        <h2>photography</h2>
+        <p>
+          Photographs, visual essays, galleries, and experiments in color and
+          light.
+        </p>
+      </article>
+      <article class="placeholder-card" id="tutorials">
+        <h2>tutorials</h2>
+        <p>
+          Practical guides, technical walkthroughs, courses, and downloadable
+          material.
+        </p>
+      </article>
+    </section>
+  </main>
+</SiteLayout>

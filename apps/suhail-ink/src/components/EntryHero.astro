@@ -1,0 +1,94 @@
+---
+interface Props {
+  contactHref: string;
+  instagramHref: string | null;
+}
+const { contactHref, instagramHref } = Astro.props;
+---
+
+<section class="entry-hero" data-entry-hero aria-labelledby="site-wordmark">
+  <div class="entry-hero__center">
+    <h1 class="wordmark" id="site-wordmark" aria-label="suhail dot ink">
+      <span class="wordmark__name">suhail</span><button
+        class="wordmark__portal"
+        type="button"
+        aria-label="Enter suhail.ink"
+        aria-controls="site-content"
+        aria-expanded="false"
+        data-entry-trigger>.</button
+      ><span class="wordmark__ink" aria-hidden="true">ink</span>
+    </h1>
+    <p class="entry-hero__hint" aria-hidden="true">enter</p>
+  </div>
+
+  <nav class="entry-hero__footnotes" aria-label="External links">
+    <a href={contactHref}>contact</a>
+    {
+      instagramHref ? (
+        <a href={instagramHref} rel="me external">
+          instagram
+        </a>
+      ) : (
+        <span aria-disabled="true">instagram</span>
+      )
+    }
+  </nav>
+</section>
+
+<script>
+  const hero = document.querySelector<HTMLElement>("[data-entry-hero]");
+  const trigger = document.querySelector<HTMLButtonElement>(
+    "[data-entry-trigger]",
+  );
+  const content = document.querySelector<HTMLElement>("#site-content");
+  const storageKey = "suhail-entry-complete";
+
+  function enterSite(options: { focus?: boolean } = {}): void {
+    if (!hero || !trigger || !content) return;
+    hero.dataset.entered = "true";
+    trigger.setAttribute("aria-expanded", "true");
+    sessionStorage.setItem(storageKey, "true");
+    requestAnimationFrame(() => {
+      content.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+        block: "start",
+      });
+      if (options.focus) content.focus({ preventScroll: true });
+    });
+  }
+
+  trigger?.addEventListener("click", () => enterSite({ focus: true }));
+
+  let wheelHandled = false;
+  hero?.addEventListener(
+    "wheel",
+    (event) => {
+      if (wheelHandled || event.deltaY <= 12) return;
+      wheelHandled = true;
+      enterSite();
+    },
+    { passive: true },
+  );
+
+  let touchStartY = 0;
+  hero?.addEventListener(
+    "touchstart",
+    (event) => {
+      touchStartY = event.touches[0]?.clientY ?? 0;
+    },
+    { passive: true },
+  );
+  hero?.addEventListener(
+    "touchend",
+    (event) => {
+      const endY = event.changedTouches[0]?.clientY ?? touchStartY;
+      if (touchStartY - endY > 32) enterSite();
+    },
+    { passive: true },
+  );
+
+  if (sessionStorage.getItem(storageKey) === "true")
+    hero?.setAttribute("data-returning", "true");
+</script>
