@@ -9,7 +9,9 @@
     "check": "astro check",
     "dev": "astro dev",
     "preview": "astro preview",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "preview:cloudflare": "pnpm build && wrangler dev",
+    "deploy": "pnpm build && wrangler deploy"
   },
   "dependencies": {
     "astro": "latest"
