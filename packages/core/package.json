@@ -1,0 +1,24 @@
+{
+  "name": "@orbyts/loomara-core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Core artifact contracts and assembly primitives for Loomara.",
+  "license": "MIT",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}

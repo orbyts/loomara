@@ -1,0 +1,22 @@
+{
+  "name": "@orbyts/loomara-website",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The first Loomara-assembled website.",
+  "scripts": {
+    "build": "astro build",
+    "check": "astro check",
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "astro": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}

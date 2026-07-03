@@ -1,0 +1,29 @@
+{
+  "name": "loomara-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Artifact-driven website assembler and publishing toolkit.",
+  "license": "MIT",
+  "packageManager": "pnpm@10.12.4",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "pnpm --recursive --if-present build",
+    "check": "pnpm --recursive --if-present check",
+    "dev": "pnpm --filter @orbyts/loomara-website dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint \"**/*.{js,mjs,ts}\"",
+    "test": "pnpm --recursive --if-present test",
+    "loomara": "pnpm --filter loomara exec loomara"
+  },
+  "devDependencies": {
+    "@eslint/js": "latest",
+    "eslint": "latest",
+    "globals": "latest",
+    "prettier": "latest",
+    "prettier-plugin-astro": "latest",
+    "typescript-eslint": "latest"
+  }
+}
