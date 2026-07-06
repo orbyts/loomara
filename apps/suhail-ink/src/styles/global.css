@@ -93,34 +93,50 @@ a {
 .entry-hero__center {
   display: grid;
   justify-items: center;
+  transform: translate(var(--hero-center-x), var(--hero-center-y));
 }
 .wordmark {
   display: flex;
   align-items: baseline;
   margin: 0;
-  font-size: clamp(4.5rem, 15vw, 13rem);
-  font-weight: 760;
-  letter-spacing: -0.075em;
-  line-height: 0.82;
+  font-family: var(--hero-name-font-family);
+  font-size: var(--hero-name-font-size);
+  font-weight: var(--hero-name-font-weight);
+  letter-spacing: var(--hero-name-letter-spacing);
+  line-height: var(--hero-name-line-height);
+}
+
+.wordmark__name {
+  display: inline-block;
+  transform: translate(var(--hero-name-x), var(--hero-name-y));
 }
 .wordmark__ink {
   position: relative;
   z-index: 1;
-  margin-left: 0.06em;
-  color: var(--ink-mark);
-  font-family: var(--font-hand);
-  font-size: 0.55em;
-  font-weight: 400;
-  letter-spacing: -0.06em;
-  transform: rotate(-4deg) translateY(-0.02em);
+  display: inline-block;
+  flex: 0 0 auto;
+  width: var(--ink-width);
+  height: var(--ink-height);
+  margin-left: var(--ink-gap);
+  align-self: baseline;
+  background: var(--ink-mark);
+  -webkit-mask-image: url("/assets/wordmarks/ink-primary.svg");
+  mask-image: url("/assets/wordmarks/ink-primary.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transform: translateY(var(--ink-offset-y)) rotate(var(--ink-rotation));
   transform-origin: left bottom;
 }
 .wordmark__portal {
   position: relative;
   z-index: 2;
-  width: 0.28em;
-  height: 0.35em;
-  margin: 0 -0.01em 0 0.015em;
+  width: var(--portal-button-width);
+  height: var(--portal-button-height);
+  margin: 0 var(--portal-gap-right) 0 var(--portal-gap-left);
   padding: 0;
   border: 0;
   border-radius: 999px;
@@ -131,9 +147,9 @@ a {
 }
 .wordmark__portal::before {
   position: absolute;
-  top: 62%;
-  left: 50%;
-  width: 0.105em;
+  top: var(--portal-dot-y);
+  left: var(--portal-dot-x);
+  width: var(--portal-dot-size);
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--portal-fill);

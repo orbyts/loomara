@@ -9,12 +9,38 @@
   --text-primary: #171717;
   --text-secondary: #6e6c67;
   --text-faint: #9b9891;
-  --ink-mark: #151b25;
+  --ink-mark: #2868d8;
   --portal-fill: #171717;
   --focus-ring: #6657d9;
   --border-subtle: rgb(23 23 23 / 12%);
   --duration-fast: 160ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Hero design-lab controls */
+  --hero-center-x: 0rem;
+  --hero-center-y: 0rem;
+
+  --hero-name-font-family: var(--font-sans);
+  --hero-name-font-size: clamp(4.5rem, 15vw, 13rem);
+  --hero-name-font-weight: 760;
+  --hero-name-letter-spacing: -0.075em;
+  --hero-name-line-height: 0.82;
+  --hero-name-x: 0em;
+  --hero-name-y: 0em;
+
+  --portal-button-width: 0.28em;
+  --portal-button-height: 0.35em;
+  --portal-gap-left: 0.015em;
+  --portal-gap-right: -0.01em;
+  --portal-dot-size: 0.105em;
+  --portal-dot-x: 50%;
+  --portal-dot-y: 62%;
+
+  --ink-width: 0.83em;
+  --ink-height: 0.6em;
+  --ink-gap: 0.035em;
+  --ink-offset-y: 0.11em;
+  --ink-rotation: 0deg;
 }
 
 :root[data-theme="dark"] {
@@ -23,7 +49,7 @@
   --text-primary: #ecebe8;
   --text-secondary: #aaa8a2;
   --text-faint: #77756f;
-  --ink-mark: #f1f0ed;
+  --ink-mark: #72a7ff;
   --portal-fill: #f1f0ed;
   --focus-ring: #b4a8ff;
   --border-subtle: rgb(236 235 232 / 14%);
