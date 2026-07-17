@@ -20,6 +20,6 @@
     "@astrojs/check": "latest",
     "typescript": "latest",
     "vitest": "latest",
-    "wrangler": "4.107.0"
+    "wrangler": "4.112.0"
   }
 }
